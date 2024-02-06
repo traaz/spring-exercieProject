@@ -25,7 +25,7 @@ public class UserController {
         return userManager.createUser(createUserRequest);
     }
     @PostMapping("/login")
-    public Result login(@RequestBody CreateUserRequest createUserRequest) {
+    public DataResult login(@RequestBody CreateUserRequest createUserRequest) {
         return userManager.login(createUserRequest);
     }
     @GetMapping("/getall")
