@@ -1,0 +1,17 @@
+<div class="container">
+
+<form [formGroup]="loginForm">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Kullanıcı Adı</label>
+      <input type="text" class="form-control" formControlName="userName"   placeholder="Kullanıcı Adı Giriniz">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Şifre</label>
+      <input type="password" class="form-control" formControlName="password"  placeholder="Şifreyi Giriniz">
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary" (click)="logIn()">Giriş Yap</button>
+    </div>
+   
+  </form>
+</div>

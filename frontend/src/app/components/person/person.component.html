@@ -1,0 +1,33 @@
+
+<div class="form-group">
+  <label for="filterText" class="form-label">Kişi Ara</label>
+
+  <input type="text" [(ngModel)]="aranacakIsim" class="form-control"  placeholder=" İsim Giriniz">
+</div>
+
+
+<table class="table">
+    <thead>
+      <tr>
+      
+        <th scope="col">İsim</th>
+        <th scope="col">Soyisim</th>
+        <th scope="col">Age</th>
+        <th scope="col">Ülke Adı</th>
+        <th scope="col">Şehir Adı</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let person of personList | filterPipe : aranacakIsim">
+        
+        
+        <td>{{person.name}}</td>
+        <td>{{person.surname}}</td>
+        <td>{{person.age}}</td>
+        <td>{{person.countryName}}</td>
+        <td>{{person.stateName}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+  <h4 *ngIf="metin">{{metin}}</h4>
