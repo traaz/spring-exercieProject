@@ -39,7 +39,7 @@ public class StateManager implements StateService {
     @Override
     public Result add(CreateStateRequest createStateRequest) {
         this.stateBusinessRules.checkIfStateNameExists(createStateRequest.getName());
-        this.countryBusinessRules.checkIfCountryIdExists(createStateRequest.getCountryId());
+      this.countryBusinessRules.checkIfCountryIdExists(createStateRequest.getCountryId());
         State state = this.modelMapperService.forRequest().map(createStateRequest, State.class);
         stateRepository.save(state);
         return new Result(true,"Eklendi");

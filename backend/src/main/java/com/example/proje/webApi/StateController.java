@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/state")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class StateController {
     private StateService stateService;
 

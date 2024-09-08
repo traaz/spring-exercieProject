@@ -43,4 +43,22 @@ public class PersonManager implements PersonService{
         return new Result(true, "Eklendi");
 
     }
+
+    @Override
+    public DataResult<List<GetAllPeopleResponse>> getPeopleAccordingToCountryId(int id) {
+        List<Person> personList = personRepository.findByCountryId(id);
+        List<GetAllPeopleResponse> response = personList.stream()
+                .map(i->this.modelMapperService.forResponse() //her bir i'yi getAllpeopleresponse dönüstür.
+                        .map(i,GetAllPeopleResponse.class)).collect(Collectors.toList());
+        return new SuccessDataResult<List<GetAllPeopleResponse>>(response,"Data Listelendi");
+    }
+
+    @Override
+    public DataResult<List<GetAllPeopleResponse>> getPeopleAccordingToStateId(int id) {
+        List<Person> personList = personRepository.findByStateId(id);
+        List<GetAllPeopleResponse> response = personList.stream()
+                .map(i->this.modelMapperService.forResponse() //her bir i'yi getAllpeopleresponse dönüstür.
+                        .map(i,GetAllPeopleResponse.class)).collect(Collectors.toList());
+        return new SuccessDataResult<List<GetAllPeopleResponse>>(response,"Data Listelendi");
+    }
 }

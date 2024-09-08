@@ -1,11 +1,43 @@
 
-<div class="form-group">
-  <label for="filterText" class="form-label">Kişi Ara</label>
+<div>
+  <label for="filterText" class="form-label">{{ulkeIsmi}} Kişi Ara</label>
+        <div class="d-flex gap-2 col-md-8">
+          <input type="text"  [(ngModel)]="aranacakIsim"   placeholder=" İsim Giriniz">
+          <br>
+          <input type="text" [(ngModel)]="aranacakSoyIsim"   placeholder=" Soyisim Giriniz">
+          <br>
+          <input type="number" [(ngModel)]="aranacakYas"   placeholder=" Yas Giriniz">
+          <br>
+          <div class="input-space">
+            <select [(ngModel)]="selectedCountry"  (ngModelChange)="onSelect($event)" id="">
+              <option value="" disabled selected>Ülke Seçiniz</option>
+              <option *ngFor="let country of countries" [ngValue]="country" >
+                  {{country.name}}
+                  
+              </option>
+            </select>
+          </div>
+          <br>
+            <div class="input-space">
+              <select  [(ngModel)]="selectedState"  id="">
+                <option  value="" disabled selected>Şehir</option>
+                <option *ngFor="let state of states"  [ngValue]="state" >
+                    {{state.stateName}}
+                </option>
+              </select>
+            </div>
+                     </div>
+          <div class="d-flex gap-2 col-md-4 mt-2">
+            <button type="button" class="btn btn-primary" (click)="resetFilter()"
+            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+      Filtreyi Temizle
+    </button> 
+          </div>
 
-  <input type="text" [(ngModel)]="aranacakIsim" class="form-control"  placeholder=" İsim Giriniz">
-</div>
+        </div>
 
 
+     
 <table class="table">
     <thead>
       <tr>
@@ -18,7 +50,9 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor = "let person of personList | filterPipe : aranacakIsim">
+      <tr *ngFor = "let person of personList | filterPipe : aranacakIsim | 
+      surnamePipe: aranacakSoyIsim | agePipe : aranacakYas | 
+      countryPipe:selectedCountry.name | statePipe:selectedState.stateName">
         
         
         <td>{{person.name}}</td>
@@ -31,3 +65,4 @@
     </tbody>
   </table>
   <h4 *ngIf="metin">{{metin}}</h4>
+ 

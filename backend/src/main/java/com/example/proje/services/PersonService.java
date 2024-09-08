@@ -11,4 +11,6 @@ import java.util.List;
 public interface PersonService {
     DataResult<List<GetAllPeopleResponse>> getAll();
     Result Add(CreatePersonRequest createPersonRequest);
+    DataResult<List<GetAllPeopleResponse>> getPeopleAccordingToCountryId(int id);
+    DataResult<List<GetAllPeopleResponse>> getPeopleAccordingToStateId(int id);
 }

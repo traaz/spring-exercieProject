@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/person")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class PersonController {
     private PersonService   personService;
 
@@ -26,4 +27,13 @@ public class PersonController {
     public Result add(@RequestBody CreatePersonRequest createPersonRequest){
         return personService.Add(createPersonRequest);
     }
+    @GetMapping("/country/{countryId}")
+    public DataResult<List<GetAllPeopleResponse>> getPeopleAccordingToCountryId(@PathVariable int countryId){
+        return personService.getPeopleAccordingToCountryId(countryId);
+    }
+    @GetMapping("/state/{stateId}")
+    public DataResult<List<GetAllPeopleResponse>> getPeopleAccordingToStateId(@PathVariable int stateId){
+        return personService.getPeopleAccordingToCountryId(stateId);
+    }
+
 }

@@ -28,6 +28,10 @@ public class Person {
     @Column(name = "age")
     private int age;
 
+    @Column(name = "phone_Number")
+    private String phoneNumber;
+
+
     @ManyToOne()
     @JoinColumn(name = "country_id")
     private Country country;

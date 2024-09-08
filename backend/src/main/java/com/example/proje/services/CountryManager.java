@@ -29,6 +29,7 @@ public class CountryManager implements CountryService{
         List<GetAllCountriesResponse> responses = countries.stream()
                 .map(country->this.modelMapperService.forResponse()
                         .map(country, GetAllCountriesResponse.class)).collect(Collectors.toList());
+
         return new SuccessDataResult<List<GetAllCountriesResponse>>(responses, "Data listelendi");
 
     }

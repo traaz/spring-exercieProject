@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/country")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class CountryController {
     private CountryService countryService;
 
@@ -26,4 +27,5 @@ public class CountryController {
     public Result Add(@RequestBody  CreateCountryRequest createCountryRequest){
         return countryService.add(createCountryRequest);
     }
+
 }
