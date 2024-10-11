@@ -33,7 +33,12 @@ public class PersonController {
     }
     @GetMapping("/state/{stateId}")
     public DataResult<List<GetAllPeopleResponse>> getPeopleAccordingToStateId(@PathVariable int stateId){
-        return personService.getPeopleAccordingToCountryId(stateId);
+        return personService.getPeopleAccordingToStateId(stateId);
+    }
+
+    @GetMapping("/orderbyname")
+    public DataResult<List<GetAllPeopleResponse>> getPeopleNameOrderByNameAsc(){
+        return personService.getPeopleOrderByName();
     }
 
 }

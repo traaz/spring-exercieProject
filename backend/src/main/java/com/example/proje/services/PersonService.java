@@ -13,4 +13,6 @@ public interface PersonService {
     Result Add(CreatePersonRequest createPersonRequest);
     DataResult<List<GetAllPeopleResponse>> getPeopleAccordingToCountryId(int id);
     DataResult<List<GetAllPeopleResponse>> getPeopleAccordingToStateId(int id);
+
+    DataResult<List<GetAllPeopleResponse>> getPeopleOrderByName();
 }

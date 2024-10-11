@@ -61,4 +61,13 @@ public class PersonManager implements PersonService{
                         .map(i,GetAllPeopleResponse.class)).collect(Collectors.toList());
         return new SuccessDataResult<List<GetAllPeopleResponse>>(response,"Data Listelendi");
     }
+
+    @Override
+    public DataResult<List<GetAllPeopleResponse>> getPeopleOrderByName() {
+        List<Person> personList = personRepository.findAllByOrderByNameAscSurnameAsc();
+        List<GetAllPeopleResponse> response = personList.stream()
+                .map(i -> this.modelMapperService.forResponse()
+                        .map(i, GetAllPeopleResponse.class)).collect(Collectors.toList());
+        return new SuccessDataResult<List<GetAllPeopleResponse>>(response, "Data Listelendi");
+    }
 }
